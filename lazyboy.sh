@@ -2,6 +2,8 @@
 
 port='port.txt'
 
+echo "Total portservice in list port need deploy: $(cat port.txt | wc -l)"
+
 for portservice in `cat $port`
 do
 	tmsh create ltm pool Pool_DCST_$portservice members add { 10.163.135.74:$portservice 10.163.135.75:$portservice } monitor tcp
